@@ -2,9 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async (cityName) => {
     const apikey = "bf10b2170aae545cbaccfd498da296f5"
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apikey}`)
+    const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apikey}`);
+    const response = await data.json();
     return response
-})
+});
 
 const initialState = {
     data: [],
